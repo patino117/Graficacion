@@ -1,4 +1,4 @@
-
+/*Probablemente contiene la lógica específica o las clases para dibujar figuras en el canvas.*/
 export class CanvasLocal {
   //atributos
   protected graphics: CanvasRenderingContext2D;
@@ -40,10 +40,22 @@ export class CanvasLocal {
 
   paint() {
     
-
-    this.drawLine(100.5,100, 500,100.5);
+    //Note: Cada this.drawLine(x1, y1, x2, y2) recibe cuatro números: las coordenadas del punto de inicio $(x_1, y_1)$ y las del punto final $(x_2, y_2)$ en píxeles.
+    /*this.drawLine(100.5,100, 500,100.5);
     this.drawLine(500, 100, 300, 400);
-    this.drawLine(300, 400, 100,100);
+    this.drawLine(300, 400, 100,100);*/
+    this.drawLine(100, 100, 300, 100); 
+    this.drawLine(100, 100, 100, 300);
+    this.drawLine(300, 100, 300, 300);
+    this.drawLine(100, 300, 300, 300)
+
+    this.drawLine(100, 100, 20, 50);
+    this.drawLine(20, 50, 20,  300);
+    this.drawLine(20, 300, 300, 300);
+
+    this.drawLine(20, 50, 300, 50);
+    this.drawLine(300, 100, 300, 50);
+
    /* this.drawLine(this.iX(-3), this.iY(0), this.iX(3), this.iY(0));
     this.drawLine(this.iX(0), this.iY(2), this.iX(0), this.iY(-2));
 

@@ -1,3 +1,4 @@
+/*Suele ser el punto de entrada. Aquí es donde se suele inicializar el lienzo y se llaman a las funciones de dibujo. */
 import { CanvasLocal } from './canvasLocal.js';
 
 let canvas: HTMLCanvasElement;
