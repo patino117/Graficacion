@@ -1,0 +1,105 @@
+[33mcommit 38c617fa42dad97fb6a4a918c56b682fd1396db1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Author: Patiño <luisangelperezpatino@gmail.com>
+Date:   Thu Mar 26 12:52:25 2026 -0600
+
+    Tarea1 Primera figura de cubo con un aspecto 3D
+
+[33mcommit 455f5e3bfa093ad0db01abff0728373398f96357[m
+Merge: 0c93b2b 1ac861b
+Author: UrielMorales2 <70977162+UrielMorales2@users.noreply.github.com>
+Date:   Tue Oct 5 14:37:19 2021 -0500
+
+    Merge pull request #19 from jorrgeCruz/JuarezDavid
+    
+    Juarezdavid
+
+[33mcommit 1ac861b07a7a83b8fd9ffda7707a04106acb8d47[m
+Author: UrielMorales <urielmorales@gmail.com>
+Date:   Tue Oct 5 12:47:45 2021 -0500
+
+    se agrego link footer
+
+[33mcommit bfe0a557b8ee80ee67e4dd33b36b589bd4834ee0[m
+Author: UrielMorales <urielmorales@gmail.com>
+Date:   Tue Oct 5 12:33:38 2021 -0500
+
+    se agrego link footer
+
+[33mcommit 0c93b2bb03427e902c4951ca3dd7164e84bc45b3[m
+Author: Jorge Cruz Perez <68938473+jorrgeCruz@users.noreply.github.com>
+Date:   Mon Sep 13 16:48:03 2021 -0500
+
+    A partir de aqui se trabajo solo diseño de interface (#13)
+
+[33mcommit 36fe953352227c2aaf033d4674cfa3335612fc97[m
+Author: Jorge Cruz <jorrge.cruz@gmail.com>
+Date:   Mon Sep 6 11:47:03 2021 -0500
+
+    CAmbios temporales hechos para la clase
+
+[33mcommit 013b45768abf62a7bcd160c16666ef39e63855e8[m
+Author: Jorge Cruz <jorrge.cruz@gmail.com>
+Date:   Wed Apr 28 13:13:26 2021 -0500
+
+    guardaddo temporal
+
+[33mcommit b4c2b5336258e808e5d60f9e0b7cd1f2c0c46a56[m
+Author: Jorge Cruz <jorrge.cruz@gmail.com>
+Date:   Wed Apr 21 14:20:36 2021 -0500
+
+    graficador
+
+[33mcommit 458e2dda170476fa392f5f44659a2342c61a73fa[m
+Author: Jorge Cruz <jorrge.cruz@gmail.com>
+Date:   Wed Apr 21 09:36:16 2021 -0500
+
+    graficador
+
+[33mcommit 7807f643096fc23b8596c91e048533d175a5f52c[m
+Author: Jorge Cruz <jorrge.cruz@gmail.com>
+Date:   Sun Apr 18 14:27:31 2021 -0500
+
+    Fase 1, codigo basico
+
+[33mcommit 1ba3412994dd22b3cbb2d8199170a268c29f8c40[m
+Merge: f8d76c5 9042241
+Author: Jorge Cruz <jorrge.cruz@gmail.com>
+Date:   Mon Apr 5 15:12:14 2021 -0500
+
+    Merge branch 'main' of github.com:jorrgeCruz/grahics into malla
+
+[33mcommit f8d76c59395379e040fe038fe04334c1431f8539[m
+Author: Jorge Cruz <jorrge.cruz@gmail.com>
+Date:   Mon Apr 5 15:11:49 2021 -0500
+
+    Ejercicio 1,2
+
+[33mcommit 9042241d58a3ac247167bf79824d154c70327e6f[m
+Author: Jorge Cruz Perez <68938473+jorrgeCruz@users.noreply.github.com>
+Date:   Sat Mar 27 16:36:15 2021 -0600
+
+    Update issue templates
+
+[33mcommit 5d50b55e9d1d71babf144c06899fd2b4ef8de2a6[m
+Author: Jorge Cruz Perez <68938473+jorrgeCruz@users.noreply.github.com>
+Date:   Sat Mar 27 16:31:59 2021 -0600
+
+    Update issue templates
+
+[33mcommit 33b71cf283c95f3ad9ebe897c75d588d62f3a72e[m
+Author: Jorge Cruz Perez <68938473+jorrgeCruz@users.noreply.github.com>
+Date:   Sat Mar 27 16:23:09 2021 -0600
+
+    Update issue templates
+
+[33mcommit 7e75215f266e0b1ff2a7a33fe392d6b6042e355a[m
+Author: Jorge Cruz <jorrge.cruz@gmail.com>
+Date:   Thu Feb 18 16:51:38 2021 -0600
+
+    Actualizacion
+
+[33mcommit 1bfaf7ff87e0c634c2fb7154266b3892de1a5b07[m
+Author: Jorge Cruz <jorrge.cruz@gmail.com>
+Date:   Thu Feb 18 14:36:37 2021 -0600
+
+    Primer version en TS
