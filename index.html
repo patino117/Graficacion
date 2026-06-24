@@ -1,87 +1,182 @@
-<!-- Es la cara visible. Contiene una etiqueta <canvas>, que es el "lienzo" donde se dibujan las figuras.-->
 <!doctype html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundation Starter Template</title>
-    <!-- Compressed CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" 
-        rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style/index.css">
-    </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Graficación</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Abrir</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Vizualizar</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Expand</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  About
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <li><a class="dropdown-item" href="#">Development Team </a></li>
-                  <li><a class="dropdown-item" href="#">Version</a></li>
-                  <li><a class="dropdown-item" href="#">Contact</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Visor minimalista de modelos 3D con animación, piezas y Z-buffer.">
+  <title>Visor Proyecto</title>
+  <link rel="stylesheet" href="./style/index.css">
+</head>
+<body>
+  <header class="topbar">
 
-      <div class="card text-center">
-        <div class="card-header">
-          Canvas de vizualizaion
-        </div>
-        <div class="chart card-img-bottom">
-            <canvas id="circlechart" width="640" height="480"></canvas>
+    <div class="topbar-actions">
+      <button class="button button-ghost" id="load-demo" type="button">Ejemplo</button>
+      <button class="button button-primary" id="open-file" type="button">
+        <span aria-hidden="true">＋</span>
+        Abrir modelo
+      </button>
+      <input id="file-input" type="file" accept=".txt,.dat,text/plain" hidden>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="viewer-panel" aria-label="Visor tridimensional">
+      <div class="viewer-toolbar">
+        <div class="model-heading">
+          <span class="live-dot" aria-hidden="true"></span>
+          <div>
+            <strong id="status-text">Preparando visor…</strong>
+            <span id="model-info">Sin información</span>
           </div>
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">Está es el área de dibujo dosponible.</p>
-          
-          
         </div>
-        
-        <div class="card-footer text-muted">
-          2 days ago
+
+        <div class="toolbar-controls">
+          <label class="compact-field">
+            <span>Visualización</span>
+            <select id="render-mode">
+              <option value="wireframe">Alámbrico</option>
+              <option value="hidden" selected>Líneas ocultas</option>
+              <option value="zbuffer">Z-buffer</option>
+            </select>
+          </label>
+
+          <button class="button button-play" id="play-pause" type="button" aria-pressed="false">
+            <span aria-hidden="true">▶</span>
+            <span>Reproducir</span>
+          </button>
         </div>
       </div>
 
-      <footer id="footer" class="pb-4 pt-4">
-        <div class="container">
-          <div class="row text-center">
-            <div class="col-12 col-lg">
-              <a href="https://github.com/jorrgeCruz/graphics">Repositorio Principal </a>
-            </div>
-            <div class="col-12 col-lg">
-              <a href="#">Contáctanos</a>
-            </div>
-            <div class="col-12 col-lg">
-              <a href="#">Estudiantes</a>
-            </div>
-          </div>
+      <div class="canvas-container" id="canvas-container">
+        <canvas id="viewer-canvas" tabindex="0" aria-label="Modelo 3D interactivo"></canvas>
+
+        <div class="empty-state" id="empty-state">
+          <strong>Arrastra aquí un archivo .dat o .txt</strong>
+          <span>También puedes usar “Abrir modelo”.</span>
         </div>
-      </footer>
-     <!-- Compressed JavaScript -->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-    </script>
-    <script src="./dist/src/index.js" type="module"></script>
-  </body>
+
+        <div class="canvas-help">
+          Arrastra para rotar · Rueda para acercar · Shift + arrastrar para mover la pieza
+        </div>
+      </div>
+    </section>
+
+    <aside class="control-panel" aria-label="Controles del visor">
+      <div class="panel-title">
+        <div>
+          <span>Controles</span>
+          <strong>Movimiento y piezas</strong>
+        </div>
+        <button class="icon-button" id="reset-all" type="button" title="Restablecer todo" aria-label="Restablecer todo">↺</button>
+      </div>
+
+      <section class="control-section">
+        <div class="section-heading">
+          <span>Animación</span>
+          <output id="speed-value">0.6×</output>
+        </div>
+        <input class="range" id="animation-speed" type="range" min="0.1" max="1.8" step="0.1" value="0.6">
+      </section>
+
+      <section class="control-section">
+        <div class="section-heading">
+          <span>Vista</span>
+          <small>Cámara</small>
+        </div>
+        <div class="direction-pad">
+          <button id="view-up" type="button" aria-label="Vista arriba">↑</button>
+          <button id="view-left" type="button" aria-label="Vista izquierda">←</button>
+          <button id="reset-view" class="pad-center" type="button" aria-label="Restablecer vista">●</button>
+          <button id="view-right" type="button" aria-label="Vista derecha">→</button>
+          <button id="view-down" type="button" aria-label="Vista abajo">↓</button>
+        </div>
+        <div class="button-row">
+          <button class="mini-button" id="zoom-out" type="button">− Alejar</button>
+          <button class="mini-button" id="zoom-in" type="button">＋ Acercar</button>
+        </div>
+      </section>
+
+      <section class="control-section">
+        <div class="section-heading">
+          <span>Modelo completo</span>
+          <small>Trasladar y girar</small>
+        </div>
+
+        <div class="axis-controls" aria-label="Traslación del modelo">
+          <span>X</span>
+          <button id="model-x-minus" type="button">−</button>
+          <button id="model-x-plus" type="button">＋</button>
+          <span>Y</span>
+          <button id="model-y-minus" type="button">−</button>
+          <button id="model-y-plus" type="button">＋</button>
+          <span>Z</span>
+          <button id="model-z-minus" type="button">−</button>
+          <button id="model-z-plus" type="button">＋</button>
+        </div>
+
+        <div class="rotation-row">
+          <select id="model-rotation-axis" aria-label="Eje de giro del modelo">
+            <option value="x">Eje X</option>
+            <option value="y" selected>Eje Y</option>
+            <option value="z">Eje Z</option>
+          </select>
+          <button id="model-rotate-minus" type="button">−10°</button>
+          <button id="model-rotate-plus" type="button">＋10°</button>
+        </div>
+        <button class="text-button" id="reset-model" type="button">Restablecer modelo</button>
+      </section>
+
+      <section class="control-section">
+        <div class="section-heading">
+          <span>Piezas</span>
+          <small>Selección automática</small>
+        </div>
+
+        <label class="field-label" for="piece-select">Pieza activa</label>
+        <select class="full-select" id="piece-select"></select>
+
+        <div class="axis-controls" aria-label="Traslación de pieza">
+          <span>X</span>
+          <button id="piece-x-minus" type="button">−</button>
+          <button id="piece-x-plus" type="button">＋</button>
+          <span>Y</span>
+          <button id="piece-y-minus" type="button">−</button>
+          <button id="piece-y-plus" type="button">＋</button>
+          <span>Z</span>
+          <button id="piece-z-minus" type="button">−</button>
+          <button id="piece-z-plus" type="button">＋</button>
+        </div>
+
+        <div class="rotation-row">
+          <select id="piece-rotation-axis" aria-label="Eje de giro de la pieza">
+            <option value="x">Eje X</option>
+            <option value="y">Eje Y</option>
+            <option value="z" selected>Eje Z</option>
+          </select>
+          <button id="piece-rotate-minus" type="button">−10°</button>
+          <button id="piece-rotate-plus" type="button">＋10°</button>
+        </div>
+
+        <button class="text-button" id="reset-piece" type="button">Restablecer pieza activa</button>
+
+        <div class="separation-control">
+          <div class="section-heading">
+            <label for="separation">Separación</label>
+            <output id="separation-value">0%</output>
+          </div>
+          <input class="range" id="separation" type="range" min="0" max="100" step="1" value="0">
+          <button class="text-button" id="join-pieces" type="button">Unir piezas</button>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <span> Proyecto Graficación 2026 - Repositorio original: <a href="https://github.com/JonathanJS333/Graphics/tree/Proyecto">Github</a> <code>Faces:</code>.</span>
+    <span>Atajos: flechas, +/−, R y espacio.</span>
+  </footer>
+
+  <script type="module" src="./dist/src/index.js"></script>
+</body>
 </html>

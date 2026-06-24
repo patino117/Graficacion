@@ -1,5 +1,15 @@
 {
+  "name": "graphics-proyecto-final",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Visor 3D minimalista con animaci\u00f3n, piezas y Z-buffer.",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "serve": "npx --yes http-server . -c-1"
+  },
   "devDependencies": {
-    "typescript": "^6.0.2"
-  }
+    "typescript": "^5.9.3"
+  },
+  "type": "module"
 }
