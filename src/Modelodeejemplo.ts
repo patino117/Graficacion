@@ -1,4 +1,4 @@
-export const DEFAULT_MODEL = `	
+export const DEFAULT_MODEL = `
 # Archivo generado automáticamente
 
 
